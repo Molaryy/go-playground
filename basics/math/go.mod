@@ -1,3 +1,3 @@
-module example.com/rand
+module example.com/main
 
 go 1.20
