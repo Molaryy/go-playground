@@ -2,25 +2,28 @@ package main
 
 import (
 	"fmt"
-	"lib"
+	"github.com/gin-gonic/gin"
+	"todo-go/lib"
+	"todo-go/routes/home"
+	"todo-go/routes/todos"
 )
 
-type todo struct {
-	ID        string `json:"ID"`
-	Item      string `json:"Item"`
-	Completed bool   `json:"Completed"`
-}
+func startApp(envPath string) {
+	port := fmt.Sprint("localhost:", lib.GetEnvFileValue(envPath, "PORT"))
 
-var todos = []todo{
-	{ID: "1", Item: "How to TIE YOUR SHOELACES | Step by Step Guide for Kids", Completed: false},
-	{ID: "2", Item: "Epitech > 42", Completed: true},
-	{ID: "3", Item: "Buy some tomatoes", Completed: false},
+	router := gin.Default()
+
+	// home
+	home.GetHomeRoute(router)
+
+	// todos
+	todos.TodoHandler(router)
+
+	if err := router.Run(port); err != nil {
+		return
+	}
 }
 
 func main() {
-
-	//router := gin.Default()
-	port := fmt.Sprint("localhost:", lib.GetEnvFileValue(".env", "PORT"))
-	fmt.Println(port)
-	//router.Run("localhost:3000")
+	startApp(".env")
 }
