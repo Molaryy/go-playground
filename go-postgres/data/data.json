@@ -1,0 +1,14 @@
+{
+  "todos" : [
+    {
+      "id": 1,
+      "title": "Buy sushi's",
+      "description": "go the market to get sushi's"
+    },
+    {
+      "id": 2,
+      "title": "Get the newest macbook",
+      "description": "first get money and ten we'll see"
+    }
+  ]
+}
