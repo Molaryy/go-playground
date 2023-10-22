@@ -23,5 +23,6 @@ jobs:
 
     - name: Build
       run: |
+        ls
         cd todo-go
         go build -v 
